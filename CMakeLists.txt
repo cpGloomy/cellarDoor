@@ -13,11 +13,12 @@ enable_testing()
 add_subdirectory(googletest)
 
 set(Headers
-    ~/Projects/cellarDoor/src/Example.h
+    ~/Projects/cellarDoor/src/character.h
 )
 
 set(Sources
-    ~/Projects/cellarDoor/src/Example.cc
+    ~/Projects/cellarDoor/src/main.cc
+    ~/Projects/cellarDoor/src/character.cc
 )
 
 add_library(${This} STATIC ${Sources} ${Headers})
