@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.24.2)
 set(This cellarDoorTests)
 
 set(Sources
-    ExampleTests.cc
+    CharacterTests.cc
 )
 
 add_executable(${This} ${Sources})
