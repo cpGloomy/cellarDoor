@@ -5,7 +5,7 @@
 
 class Character {
  public:
-  Character(){};
+  Character() : isAlive(true){};
   Character(std::string name) : character_name(name), isAlive(true){};
   ~Character(){};
 
