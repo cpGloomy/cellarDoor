@@ -17,15 +17,32 @@ struct MonsterTest : public ::testing::Test {
   }
 };
 
-TEST_F(MonsterTest, CanCreateMonster) { EXPECT_TRUE(monster); }
-
-TEST_F(MonsterTest, CanNameMonsterWithConstructor) {
-  EXPECT_EQ(monster2->GetName(), "Giant Rat");
+TEST(TestMonster, CanCreateMonsterAsMobile) {
+  Mobiles* monster = new Monster();
+  EXPECT_TRUE(monster);
+  delete monster;
 }
 
-TEST_F(MonsterTest, CanNameMonsterWithSetter) {
+TEST(TestMonster, CanCreateMonsterWithName) {
+  Mobiles* monster = new Monster("Giant Rat");
+  EXPECT_EQ(monster->GetName(), "Giant Rat");
+  delete monster;
+}
+
+TEST(TestMonster, CanNameMonsterWithSetter) {
+  Mobiles* monster = new Monster();
   monster->SetName("Giant Rat");
   EXPECT_EQ(monster->GetName(), "Giant Rat");
+  delete monster;
 }
 
-TEST_F(MonsterTest, MonsterCreatedAlive) { EXPECT_TRUE(monster->IsAlive()); }
+TEST(TestMonster, MonsterCreatedAlive) {
+  Mobiles* monster = new Monster();
+  EXPECT_TRUE(monster->IsAlive());
+  delete monster;
+}
+
+TEST(TestMonster, CreateGiantRat) {
+  Mobiles* monster = new Monster(new GiantRat());
+  EXPECT_EQ(monster->GetName(), "Giant Rat");
+}

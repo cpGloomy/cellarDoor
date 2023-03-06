@@ -3,19 +3,22 @@
 
 #include <string>
 
-class Character {
+#include "mobiles.h"
+class Character : public Mobiles {
  public:
-  Character() : isAlive(true){};
-  Character(std::string name) : character_name(name), isAlive(true){};
+  Character(){};
+  Character(std::string name) : character_name(name){};
+
   ~Character(){};
 
   std::string const GetName() { return character_name; }
   void SetName(std::string name) { character_name = name; }
+
   bool IsAlive() { return isAlive; }
 
  private:
   std::string character_name;
-  bool isAlive;
+  bool isAlive = true;
 };
 
 #endif  //? CHARACTER_H

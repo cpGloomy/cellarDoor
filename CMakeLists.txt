@@ -14,11 +14,14 @@ add_subdirectory(googletest)
 
 set(Headers
     ~/Projects/cellarDoor/src/character.h
+    ~/Projects/cellarDoor/src/monster.h
+    ~/Projects/cellarDoor/src/mobiles.h
+    ~/Projects/cellarDoor/src/mobilesStats.h
 )
 
 set(Sources
     ~/Projects/cellarDoor/src/main.cc
-    ~/Projects/cellarDoor/src/character.cc
+    ~/Projects/cellarDoor/src/monster.cc
 )
 
 add_library(${This} STATIC ${Sources} ${Headers})
