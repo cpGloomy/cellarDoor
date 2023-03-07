@@ -1,15 +1,14 @@
 #include <gtest/gtest.h>
 
+#include <string>
+
 #include "../src/monster.h"
 
 struct MonsterTest : public ::testing::Test {
   Monster* monster;
   Monster* monster2;
 
-  virtual void SetUp() override {
-    monster = new Monster();
-    monster2 = new Monster("Giant Rat");
-  }
+  virtual void SetUp() override { monster = new Monster(); }
 
   virtual void TearDown() override {
     delete monster;
@@ -20,12 +19,6 @@ struct MonsterTest : public ::testing::Test {
 TEST(TestMonster, CanCreateMonsterAsMobile) {
   Mobiles* monster = new Monster();
   EXPECT_TRUE(monster);
-  delete monster;
-}
-
-TEST(TestMonster, CanCreateMonsterWithName) {
-  Mobiles* monster = new Monster("Giant Rat");
-  EXPECT_EQ(monster->GetName(), "Giant Rat");
   delete monster;
 }
 
@@ -43,6 +36,9 @@ TEST(TestMonster, MonsterCreatedAlive) {
 }
 
 TEST(TestMonster, CreateGiantRat) {
-  Mobiles* monster = new Monster(new GiantRat());
+  MonsterType* giantRat = new MonsterType("Giant Rat", 40, 0, 1);
+
+  Mobiles* monster = new Monster(giantRat);
   EXPECT_EQ(monster->GetName(), "Giant Rat");
+  delete monster;
 }

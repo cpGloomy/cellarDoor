@@ -6,30 +6,20 @@
 #include "mobiles.h"
 #include "mobilesStats.h"
 
-class MonsterType {
- public:
-  MonsterType(){};
-  virtual ~MonsterType() = default;
-
-  virtual std::string const GetName() = 0;
-  virtual MobilesBaseStats* GetBaseStats() = 0;
+struct MonsterType {
+  std::string name;
+  int baseHP;
+  int startingLevel;
+  int startingExps;
+  MonsterType(std::string name, int hp, int lvl, int exps)
+      : name(name), baseHP(hp), startingLevel(lvl), startingExps(exps){};
 };
 
-class GiantRat : public MonsterType {
- public:
-  GiantRat();
-  virtual std::string const GetName() { return this->name; }
-  virtual MobilesBaseStats* GetBaseStats() { return this->baseStats; }
-
- private:
-  std::string const name = "Giant Rat";
-  MobilesBaseStats* baseStats;
-};
 class Monster : public Mobiles {
  public:
-  Monster(){};
-  Monster(std::string name) : name(name){};
+  Monster();
   Monster(MonsterType* type);
+  ~Monster();
 
   virtual std::string const GetName() { return this->name; }
   void SetName(std::string name) { this->name = name; }
@@ -40,6 +30,7 @@ class Monster : public Mobiles {
   std::string name;
   bool isAlive = true;
   MonsterType* type;
+  MobilesStatSheet* stats;
 };
 
 #endif  //? MONSTER_H
