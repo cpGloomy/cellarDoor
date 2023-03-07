@@ -11,15 +11,24 @@ Monster::Monster(MonsterType* type) {
 
   this->stats = new MobilesStatSheet(
       this->type->baseHP, this->type->startingLevel, this->type->startingExps);
-  this->stats->currentHP = this->type->baseHP;
-  this->stats->maxHP = this->type->baseHP;
-
-  this->stats->currentHP = this->type->baseHP;
-  this->stats->level = this->type->startingLevel;
-  this->stats->experience = this->type->startingExps;
 }
 
 Monster::~Monster() {
   delete type;
   delete stats;
+}
+
+int Monster::GetStats(MobilesStatSheet::Stats stat) {
+  switch (stat) {
+    case MobilesStatSheet::Stats::maxHP:
+      return this->stats->maxHP;
+    case MobilesStatSheet::Stats::currentHP:
+      return this->stats->currentHP;
+    case MobilesStatSheet::Stats::level:
+      return this->stats->level;
+    case MobilesStatSheet::Stats::experience:
+      return this->stats->experience;
+    default:
+      return 0;
+  }
 }

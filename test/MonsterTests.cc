@@ -6,39 +6,34 @@
 
 struct MonsterTest : public ::testing::Test {
   Monster* monster;
-  Monster* monster2;
+  MonsterType* giantRat;
 
-  virtual void SetUp() override { monster = new Monster(); }
-
-  virtual void TearDown() override {
-    delete monster;
-    delete monster2;
+  virtual void SetUp() override {
+    giantRat = new MonsterType("Giant Rat", 45, 1, 0);
+    monster = new Monster(giantRat);
   }
+
+  virtual void TearDown() override { delete monster; }
 };
 
-TEST(TestMonster, CanCreateMonsterAsMobile) {
-  Mobiles* monster = new Monster();
-  EXPECT_TRUE(monster);
-  delete monster;
-}
-
-TEST(TestMonster, CanNameMonsterWithSetter) {
-  Mobiles* monster = new Monster();
-  monster->SetName("Giant Rat");
+TEST_F(MonsterTest, MonsterCreatedWithName) {
   EXPECT_EQ(monster->GetName(), "Giant Rat");
-  delete monster;
 }
 
-TEST(TestMonster, MonsterCreatedAlive) {
-  Mobiles* monster = new Monster();
-  EXPECT_TRUE(monster->IsAlive());
-  delete monster;
+TEST_F(MonsterTest, MonsterCreatedIsAlive) { EXPECT_TRUE(monster->IsAlive()); }
+
+TEST_F(MonsterTest, MonsterCreatedIsNotAlly) {
+  EXPECT_FALSE(monster->IsAlly());
 }
 
-TEST(TestMonster, CreateGiantRat) {
-  MonsterType* giantRat = new MonsterType("Giant Rat", 40, 0, 1);
+TEST_F(MonsterTest, MonsterCreatedWith45StartingHealth) {
+  EXPECT_EQ(monster->GetStats(MobilesStatSheet::Stats::maxHP), 45);
+}
 
-  Mobiles* monster = new Monster(giantRat);
-  EXPECT_EQ(monster->GetName(), "Giant Rat");
-  delete monster;
+TEST_F(MonsterTest, MonsterCreatedWith1StartingLevel) {
+  EXPECT_EQ(monster->GetStats(MobilesStatSheet::Stats::level), 1);
+}
+
+TEST_F(MonsterTest, MonsterCreatedWith0StartingExp) {
+  EXPECT_EQ(monster->GetStats(MobilesStatSheet::Stats::experience), 0);
 }

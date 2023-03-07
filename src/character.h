@@ -4,21 +4,29 @@
 #include <string>
 
 #include "mobiles.h"
+#include "mobilesStats.h"
 class Character : public Mobiles {
  public:
-  Character(){};
-  Character(std::string name) : character_name(name){};
+  Character();
+  Character(std::string name, MobilesStatSheet* stats)
+      : name(name), stats(stats){};
 
-  ~Character(){};
+  ~Character();
 
-  std::string const GetName() { return character_name; }
-  void SetName(std::string name) { character_name = name; }
+  std::string const GetName() { return name; }
+  void SetName(std::string name) { name = name; }
 
   bool IsAlive() { return isAlive; }
+  bool IsAlly() { return isAlly; }
+
+  virtual int GetStats(
+      MobilesStatSheet::Stats stat);  //! 0, maxHP, currentHP, level, experience
 
  private:
-  std::string character_name;
+  std::string name;
   bool isAlive = true;
+  bool isAlly = true;
+  MobilesStatSheet* stats;
 };
 
 #endif  //? CHARACTER_H

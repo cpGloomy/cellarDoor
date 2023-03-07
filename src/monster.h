@@ -5,15 +5,7 @@
 
 #include "mobiles.h"
 #include "mobilesStats.h"
-
-struct MonsterType {
-  std::string name;
-  int baseHP;
-  int startingLevel;
-  int startingExps;
-  MonsterType(std::string name, int hp, int lvl, int exps)
-      : name(name), baseHP(hp), startingLevel(lvl), startingExps(exps){};
-};
+#include "monstertype.h"
 
 class Monster : public Mobiles {
  public:
@@ -25,10 +17,14 @@ class Monster : public Mobiles {
   void SetName(std::string name) { this->name = name; }
 
   bool IsAlive() { return isAlive; }
+  bool IsAlly() { return isAlly; }
+
+  virtual int GetStats(MobilesStatSheet::Stats stat);
 
  private:
   std::string name;
   bool isAlive = true;
+  bool isAlly = false;
   MonsterType* type;
   MobilesStatSheet* stats;
 };
