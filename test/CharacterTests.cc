@@ -17,17 +17,25 @@ struct CharacterTest : public ::testing::Test {
   }
 };
 
-TEST_F(CharacterTest, CanCreateCharacter) { EXPECT_TRUE(character); }
-
-TEST_F(CharacterTest, CanNameCharacterWithConstructor) {
-  EXPECT_EQ(character2->GetName(), "Omerye");
+TEST(TestCharacter, CanCreatecharacterAsMobile) {
+  Mobiles* character = new Character();
+  EXPECT_TRUE(character);
+  delete character;
 }
 
-TEST_F(CharacterTest, CanNameCharacterWithSetter) {
-    character->SetName("Omerye");
+TEST(TestCharacter, CanCreatecharacterWithName) {
+  Mobiles* character = new Character("Omerye");
+  EXPECT_EQ(character->GetName(), "Omerye");
+  delete character;
+}
+
+TEST(TestCharacter, CanNamecharacterWithSetter) {
+  Mobiles* character = new Character();
+  character->SetName("Omerye");
   EXPECT_EQ(character->GetName(), "Omerye");
 }
 
-TEST_F(CharacterTest, CreatedCharacterIsAlive) {
+TEST(TestCharacter, characterCreatedAlive) {
+  Mobiles* character = new Character();
   EXPECT_TRUE(character->IsAlive());
 }

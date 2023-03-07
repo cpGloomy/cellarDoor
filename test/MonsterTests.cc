@@ -1,15 +1,14 @@
 #include <gtest/gtest.h>
 
+#include <string>
+
 #include "../src/monster.h"
 
 struct MonsterTest : public ::testing::Test {
   Monster* monster;
   Monster* monster2;
 
-  virtual void SetUp() override {
-    monster = new Monster();
-    monster2 = new Monster("Giant Rat");
-  }
+  virtual void SetUp() override { monster = new Monster(); }
 
   virtual void TearDown() override {
     delete monster;
@@ -17,15 +16,29 @@ struct MonsterTest : public ::testing::Test {
   }
 };
 
-TEST_F(MonsterTest, CanCreateMonster) { EXPECT_TRUE(monster); }
-
-TEST_F(MonsterTest, CanNameMonsterWithConstructor) {
-  EXPECT_EQ(monster2->GetName(), "Giant Rat");
+TEST(TestMonster, CanCreateMonsterAsMobile) {
+  Mobiles* monster = new Monster();
+  EXPECT_TRUE(monster);
+  delete monster;
 }
 
-TEST_F(MonsterTest, CanNameMonsterWithSetter) {
+TEST(TestMonster, CanNameMonsterWithSetter) {
+  Mobiles* monster = new Monster();
   monster->SetName("Giant Rat");
   EXPECT_EQ(monster->GetName(), "Giant Rat");
+  delete monster;
 }
 
-TEST_F(MonsterTest, MonsterCreatedAlive) { EXPECT_TRUE(monster->IsAlive()); }
+TEST(TestMonster, MonsterCreatedAlive) {
+  Mobiles* monster = new Monster();
+  EXPECT_TRUE(monster->IsAlive());
+  delete monster;
+}
+
+TEST(TestMonster, CreateGiantRat) {
+  MonsterType* giantRat = new MonsterType("Giant Rat", 40, 0, 1);
+
+  Mobiles* monster = new Monster(giantRat);
+  EXPECT_EQ(monster->GetName(), "Giant Rat");
+  delete monster;
+}
