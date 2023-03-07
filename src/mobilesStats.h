@@ -3,12 +3,8 @@
 
 #include <string>
 
-struct MobilesBaseStats {
-  int maxHP;
-  int currentHP;
-};
-
 struct MobilesStatSheet {
+  enum class Stats { maxHP, currentHP, level, experience };
   int maxHP;
   int currentHP;
   int level;

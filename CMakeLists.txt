@@ -22,6 +22,7 @@ set(Headers
 set(Sources
     ~/Projects/cellarDoor/src/main.cc
     ~/Projects/cellarDoor/src/monster.cc
+    ~/Projects/cellarDoor/src/character.cc
 )
 
 add_library(${This} STATIC ${Sources} ${Headers})

@@ -4,38 +4,30 @@
 
 struct CharacterTest : public ::testing::Test {
   Character* character;
-  Character* character2;
 
   virtual void SetUp() override {
-    character = new Character();
-    character2 = new Character("Omerye");
+    character = new Character("Omerye", new MobilesStatSheet(100, 1, 0));
   }
 
-  virtual void TearDown() override {
-    delete character;
-    delete character2;
-  }
+  virtual void TearDown() override { delete character; }
 };
 
-TEST(TestCharacter, CanCreatecharacterAsMobile) {
-  Mobiles* character = new Character();
-  EXPECT_TRUE(character);
-  delete character;
-}
-
-TEST(TestCharacter, CanCreatecharacterWithName) {
-  Mobiles* character = new Character("Omerye");
-  EXPECT_EQ(character->GetName(), "Omerye");
-  delete character;
-}
-
-TEST(TestCharacter, CanNamecharacterWithSetter) {
-  Mobiles* character = new Character();
-  character->SetName("Omerye");
+TEST_F(CharacterTest, CharacterCreatedWithName) {
   EXPECT_EQ(character->GetName(), "Omerye");
 }
 
-TEST(TestCharacter, characterCreatedAlive) {
-  Mobiles* character = new Character();
+TEST_F(CharacterTest, CharacterCreatedIsAlive) {
   EXPECT_TRUE(character->IsAlive());
+}
+
+TEST_F(CharacterTest, CharacterCreatedWith100StartingHealth) {
+  EXPECT_EQ(character->GetStats(MobilesStatSheet::Stats::maxHP), 100);
+}
+
+TEST_F(CharacterTest, CharacterCreatedWith1StartingLevel) {
+  EXPECT_EQ(character->GetStats(MobilesStatSheet::Stats::level), 1);
+}
+
+TEST_F(CharacterTest, CharacterCreatedWith0StartingExp) {
+  EXPECT_EQ(character->GetStats(MobilesStatSheet::Stats::experience), 0);
 }
