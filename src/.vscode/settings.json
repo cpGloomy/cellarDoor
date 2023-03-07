@@ -49,8 +49,6 @@
         "cinttypes": "cpp",
         "typeinfo": "cpp"
     },
-
     "editor.fontFamily": "'source code pro'",
-
     "editor.formatOnSave": true
 }
