@@ -9,8 +9,9 @@ Minion::Minion(MinionType* type) {
   this->type = type;
   this->SetName(this->type->name);
 
-  this->stats = new MobilesStatSheet(
-      this->type->baseHP, this->type->startingLevel, this->type->startingExps);
+  this->stats = new MobilesStatSheet(std::stoi(this->type->baseHP),
+                                     std::stoi(this->type->startingLevel),
+                                     std::stoi(this->type->startingExps));
 }
 
 Minion::~Minion() {

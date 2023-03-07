@@ -10,6 +10,8 @@ set(CMAKE_POSITION_INDEPENDENT_CODE)
 
 enable_testing()
 
+find_package(jsoncpp REQUIRED)
+
 add_subdirectory(googletest)
 
 set(Headers
@@ -20,6 +22,7 @@ set(Headers
     ~/Projects/cellarDoor/src/monstertype.h
     ~/Projects/cellarDoor/src/minion.h
     ~/Projects/cellarDoor/src/miniontype.h
+    ~/Projects/cellarDoor/src/fromjson.h
 )
 
 set(Sources
@@ -30,5 +33,6 @@ set(Sources
 )
 
 add_library(${This} STATIC ${Sources} ${Headers})
+target_link_libraries(${This} jsoncpp_lib)
 
 add_subdirectory(test)
