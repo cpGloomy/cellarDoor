@@ -1,11 +1,11 @@
 #include "minion.h"
 
 Minion::Minion() {
-  type = new MinionType("null", 0, 0, 0);
+  type = new MobilesType("null", 0, 0, 0);
   stats = new MobilesStatSheet(0, 0, 0);
 }
 
-Minion::Minion(MinionType* type) {
+Minion::Minion(MobilesType* type) {
   this->type = type;
   this->SetName(this->type->name);
 

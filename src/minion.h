@@ -3,14 +3,14 @@
 
 #include <string>
 
-#include "miniontype.h"
 #include "mobiles.h"
-#include "mobilesStats.h"
+#include "mobilesstatsheet.h"
+#include "mobilestype.h"
 
 class Minion : public Mobiles {
  public:
   Minion();
-  Minion(MinionType* type);
+  Minion(MobilesType* type);
   ~Minion();
 
   virtual std::string const GetName() { return this->name; }
@@ -25,7 +25,7 @@ class Minion : public Mobiles {
   std::string name;
   bool isAlive = true;
   bool isAlly = true;
-  MinionType* type;
+  MobilesType* type;
   MobilesStatSheet* stats;
 };
 
