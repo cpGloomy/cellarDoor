@@ -4,13 +4,13 @@
 #include <string>
 
 #include "mobiles.h"
-#include "mobilesStats.h"
-#include "monstertype.h"
+#include "mobilesstatsheet.h"
+#include "mobilestype.h"
 
 class Monster : public Mobiles {
  public:
   Monster();
-  Monster(MonsterType* type);
+  Monster(MobilesType* type);
   ~Monster();
 
   virtual std::string const GetName() { return this->name; }
@@ -25,7 +25,7 @@ class Monster : public Mobiles {
   std::string name;
   bool isAlive = true;
   bool isAlly = false;
-  MonsterType* type;
+  MobilesType* type;
   MobilesStatSheet* stats;
 };
 

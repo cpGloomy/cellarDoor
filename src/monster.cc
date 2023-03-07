@@ -1,16 +1,17 @@
 #include "monster.h"
 
 Monster::Monster() {
-  type = new MonsterType("null", 0, 0, 0);
+  type = new MobilesType("null", 0, 0, 0);
   stats = new MobilesStatSheet(0, 0, 0);
 }
 
-Monster::Monster(MonsterType* type) {
+Monster::Monster(MobilesType* type) {
   this->type = type;
   this->SetName(this->type->name);
 
-  this->stats = new MobilesStatSheet(
-      this->type->baseHP, this->type->startingLevel, this->type->startingExps);
+  this->stats = new MobilesStatSheet(std::stoi(this->type->baseHP),
+                                     std::stoi(this->type->startingLevel),
+                                     std::stoi(this->type->startingExps));
 }
 
 Monster::~Monster() {

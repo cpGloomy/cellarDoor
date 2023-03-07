@@ -6,10 +6,10 @@
 
 struct MinionTest : public ::testing::Test {
   Minion* minion;
-  MinionType* skeleton;
+  MobilesType* skeleton;
 
   virtual void SetUp() override {
-    skeleton = new MinionType("Skeleton", "45", "1", "0");
+    skeleton = new MobilesType("Skeleton", "45", "1", "0");
     minion = new Minion(skeleton);
   }
 
@@ -18,7 +18,7 @@ struct MinionTest : public ::testing::Test {
 
 struct MinionJSONTest : public ::testing::Test {
   Json::Value value;
-  MinionType* skeleton;
+  MobilesType* skeleton;
   Minion* minion;
 
   virtual void SetUp() override {
@@ -27,8 +27,8 @@ struct MinionJSONTest : public ::testing::Test {
     value["startingLevel"] = "1";
     value["startingExps"] = "0";
 
-    MinionType obj = fromJson<MinionType>(value);
-    skeleton = new MinionType(obj);
+    MobilesType obj = fromJson<MobilesType>(value);
+    skeleton = new MobilesType(obj);
     minion = new Minion(skeleton);
   }
 
