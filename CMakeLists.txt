@@ -17,12 +17,16 @@ set(Headers
     ~/Projects/cellarDoor/src/monster.h
     ~/Projects/cellarDoor/src/mobiles.h
     ~/Projects/cellarDoor/src/mobilesStats.h
+    ~/Projects/cellarDoor/src/monstertype.h
+    ~/Projects/cellarDoor/src/minion.h
+    ~/Projects/cellarDoor/src/miniontype.h
 )
 
 set(Sources
     ~/Projects/cellarDoor/src/main.cc
     ~/Projects/cellarDoor/src/monster.cc
     ~/Projects/cellarDoor/src/character.cc
+    ~/Projects/cellarDoor/src/minion.cc
 )
 
 add_library(${This} STATIC ${Sources} ${Headers})
