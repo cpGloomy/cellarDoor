@@ -5,6 +5,7 @@ set(This cellarDoorTests)
 set(Sources
     CharacterTests.cc
     MonsterTests.cc
+    MinionTests.cc
 )
 
 add_executable(${This} ${Sources})

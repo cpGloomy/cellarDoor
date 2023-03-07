@@ -20,6 +20,10 @@ TEST_F(CharacterTest, CharacterCreatedIsAlive) {
   EXPECT_TRUE(character->IsAlive());
 }
 
+TEST_F(CharacterTest, CharacterCreatedIsAlly) {
+  EXPECT_TRUE(character->IsAlly());
+}
+
 TEST_F(CharacterTest, CharacterCreatedWith100StartingHealth) {
   EXPECT_EQ(character->GetStats(MobilesStatSheet::Stats::maxHP), 100);
 }
