@@ -13,15 +13,15 @@ enable_testing()
 find_package(jsoncpp REQUIRED)
 
 add_subdirectory(googletest)
+include_directories(${CMAKE_SOURCE_DIR}/data)
 
 set(Headers
     ~/Projects/cellarDoor/src/character.h
+    ~/Projects/cellarDoor/src/mobilestype.h
     ~/Projects/cellarDoor/src/monster.h
     ~/Projects/cellarDoor/src/mobiles.h
-    ~/Projects/cellarDoor/src/mobilesStats.h
-    ~/Projects/cellarDoor/src/monstertype.h
+    ~/Projects/cellarDoor/src/mobilesstatsheet.h
     ~/Projects/cellarDoor/src/minion.h
-    ~/Projects/cellarDoor/src/miniontype.h
     ~/Projects/cellarDoor/src/fromjson.h
 )
 
