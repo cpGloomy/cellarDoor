@@ -10,6 +10,13 @@ set(CMAKE_POSITION_INDEPENDENT_CODE)
 
 enable_testing()
 
+# Boost
+find_package(Boost 1.81.0 COMPONENTS system filesystem serialization REQUIRED)
+include_directories(${BOOST_INCLUDE_DIRS})
+message("boost lib: ${Boost_LIBRARIES}")
+message("boost inc:${Boost_INCLUDE_DIR}")
+
+
 find_package(jsoncpp REQUIRED)
 
 add_subdirectory(googletest)
@@ -23,6 +30,7 @@ set(Headers
     ~/Projects/cellarDoor/src/mobilesstatsheet.h
     ~/Projects/cellarDoor/src/minion.h
     ~/Projects/cellarDoor/src/fromjson.h
+    ~/Projects/cellarDoor/src/boostpractice.h
 )
 
 set(Sources
@@ -33,6 +41,6 @@ set(Sources
 )
 
 add_library(${This} STATIC ${Sources} ${Headers})
-target_link_libraries(${This} jsoncpp_lib)
+target_link_libraries(${This} jsoncpp_lib ${Boost_LIBRARIES})
 
 add_subdirectory(test)
