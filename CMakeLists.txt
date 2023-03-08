@@ -22,25 +22,12 @@ find_package(jsoncpp REQUIRED)
 add_subdirectory(googletest)
 include_directories(${CMAKE_SOURCE_DIR}/data)
 
-set(Headers
-    ~/Projects/cellarDoor/src/character.h
-    ~/Projects/cellarDoor/src/mobilestype.h
-    ~/Projects/cellarDoor/src/monster.h
-    ~/Projects/cellarDoor/src/mobiles.h
-    ~/Projects/cellarDoor/src/mobilesstatsheet.h
-    ~/Projects/cellarDoor/src/minion.h
-    ~/Projects/cellarDoor/src/fromjson.h
-    ~/Projects/cellarDoor/src/boostpractice.h
+file(GLOB all_SRC
+    "${PROJECT_SOURCE_DIR}/src/*.h"
+    "${PROJECT_SOURCE_DIR}/src/*.cc"  
 )
 
-set(Sources
-    ~/Projects/cellarDoor/src/main.cc
-    ~/Projects/cellarDoor/src/monster.cc
-    ~/Projects/cellarDoor/src/character.cc
-    ~/Projects/cellarDoor/src/minion.cc
-)
-
-add_library(${This} STATIC ${Sources} ${Headers})
+add_library(${This} STATIC ${all_SRC})
 target_link_libraries(${This} jsoncpp_lib ${Boost_LIBRARIES})
 
 add_subdirectory(test)
