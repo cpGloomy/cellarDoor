@@ -6,6 +6,7 @@ set(Sources
     CharacterTests.cc
     MonsterTests.cc
     MinionTests.cc
+    BoostPractice.cc
 )
 
 add_executable(${This} ${Sources})

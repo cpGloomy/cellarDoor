@@ -6,6 +6,8 @@
 
 struct MobilesMap {
   std::map<std::string, std::string> mobilesMap_;
+
+  MobilesMap() {}
 };
 
 #endif  //? MOBILESMAP_H
