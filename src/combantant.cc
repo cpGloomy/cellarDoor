@@ -6,8 +6,10 @@
 bool Combantant::SetTarget(Mobiles* target) {
   if (!target->IsAlive())
     return false;
-  else
+  else {
     target_ = target;
+    return true;
+  }
 }
 
 bool Combantant::DoAttack() {
