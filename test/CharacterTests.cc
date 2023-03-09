@@ -6,7 +6,7 @@ struct CharacterTest : public ::testing::Test {
   Character* character;
 
   virtual void SetUp() override {
-    character = new Character("Omerye", new MobilesStatSheet(100, 1, 0));
+    character = new Character("Omerye", new MobilesStatSheet(100, 1, 0, 5, 15));
   }
 
   virtual void TearDown() override { delete character; }

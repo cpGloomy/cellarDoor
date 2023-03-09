@@ -4,12 +4,27 @@
 #include <string>
 
 struct MobilesStatSheet {
-  enum class Stats { maxHP, currentHP, level, experience };
+  enum class Stats {
+    maxHP,
+    currentHP,
+    level,
+    experience,
+    minDamage,
+    maxDamage
+  };
   int maxHP;
   int currentHP;
   int level;
   int experience;
-  MobilesStatSheet(int hp, int lvl, int exp)
-      : maxHP(hp), currentHP(hp), level(lvl), experience(exp){};
+  int minDamage;
+  int maxDamage;
+
+  MobilesStatSheet(int hp, int lvl, int exp, int minDmg, int maxDmg)
+      : maxHP(hp),
+        currentHP(hp),
+        level(lvl),
+        experience(exp),
+        minDamage(minDmg),
+        maxDamage(maxDmg) {}
 };
 #endif  //? MOBILESSTATS_H

@@ -3,6 +3,13 @@
 #include <iostream>
 #include <string>
 
+bool Combantant::SetTarget(Mobiles* target) {
+  if (!target->IsAlive())
+    return false;
+  else
+    target_ = target;
+}
+
 bool Combantant::DoAttack() {
   std::cout << "Combantant::DoAttack self=" << self_->GetName()
             << " alive=" << self_->IsAlive() << " target=" << target_->GetName()
@@ -26,7 +33,10 @@ bool Combantant::DoAttack() {
 
 bool Combantant::IsHit() { return true; }
 
-int Combantant::RollDamage() { return 10; }
+int Combantant::RollDamage() {
+  return RandomNumbers::GetInstance()->Roll(self_->GetStats(STATS::minDamage),
+                                            self_->GetStats(STATS::maxDamage));
+}
 
 bool Combantant::DealDamage(int dmg) {
   int cHP = target_->GetStats(STATS::currentHP);
@@ -35,7 +45,7 @@ bool Combantant::DealDamage(int dmg) {
   std::cout << "Combantant::DealDamage dmg=" << dmg << " currentHP=" << cHP
             << " newHP = " << newHP << std::endl;
   if (newHP <= 0) {
-    self_->SetAlive(false);
+    target_->SetAlive(false);
   }
   return true;
 }
