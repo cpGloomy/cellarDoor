@@ -16,10 +16,12 @@ class Monster : public Mobiles {
   virtual std::string const GetName() { return this->name; }
   void SetName(std::string name) { this->name = name; }
 
-  bool IsAlive() { return isAlive; }
-  bool IsAlly() { return isAlly; }
+  virtual bool IsAlive() { return isAlive; }
+  virtual bool IsAlly() { return isAlly; }
+  virtual void SetAlive(bool alive) { isAlive = alive; }
 
-  virtual int GetStats(MobilesStatSheet::Stats stat);
+  virtual int GetStats(STATS stat);
+  virtual void SetStats(STATS stat, int value);
 
  private:
   std::string name;

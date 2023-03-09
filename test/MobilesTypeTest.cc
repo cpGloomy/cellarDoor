@@ -54,7 +54,8 @@ TEST_F(MobilesTypeSaveTest, FilenameIsDataSkeletonTxt) {
 }
 
 TEST_F(MobilesTypeSaveTest, SaverSaveDoesNotThrowException) {
-  EXPECT_NO_THROW({ saver_->save(*skeleton_, filename_.c_str()); });
+  EXPECT_NO_THROW(
+      { Saver::GetInstance()->save(*skeleton_, filename_.c_str()); });
 }
 
 struct MobilesTypeLoadTest : public ::testing::Test {
