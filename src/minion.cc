@@ -18,7 +18,7 @@ Minion::~Minion() {
   delete stats;
 }
 
-int Minion::GetStats(MobilesStatSheet::Stats stat) {
+int Minion::GetStats(STATS stat) {
   switch (stat) {
     case MobilesStatSheet::Stats::maxHP:
       return this->stats->maxHP;
@@ -30,5 +30,18 @@ int Minion::GetStats(MobilesStatSheet::Stats stat) {
       return this->stats->experience;
     default:
       return 0;
+  }
+}
+
+void Minion::SetStats(STATS stat, int value) {
+  switch (stat) {
+    case STATS::maxHP:
+      stats->maxHP = value;
+    case STATS::currentHP:
+      stats->currentHP = value;
+    case STATS::level:
+      stats->level = value;
+    case STATS::experience:
+      stats->experience = value;
   }
 }

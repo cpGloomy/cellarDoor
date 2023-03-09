@@ -4,6 +4,8 @@
 #include <string>
 
 #include "mobilesstatsheet.h"
+
+#define STATS MobilesStatSheet::Stats
 class Mobiles {
  public:
   Mobiles(){};
@@ -14,7 +16,10 @@ class Mobiles {
   virtual void SetName(std::string name) = 0;
   virtual bool IsAlive() = 0;
   virtual bool IsAlly() = 0;
-  virtual int GetStats(MobilesStatSheet::Stats stat) = 0;
+  virtual void SetAlive(bool alive) = 0;
+
+  virtual int GetStats(STATS stat) = 0;
+  virtual void SetStats(STATS stat, int value) = 0;
 };
 
 #endif

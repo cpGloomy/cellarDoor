@@ -5,7 +5,6 @@
 #include <boost/archive/text_oarchive.hpp>
 #include <fstream>
 #include <mutex>
-#include <string>
 
 class Saver {
  private:
