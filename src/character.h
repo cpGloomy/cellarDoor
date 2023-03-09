@@ -3,12 +3,13 @@
 
 #include <string>
 
+#include "log.h"
 #include "mobiles.h"
 #include "mobilesstatsheet.h"
 class Character : public Mobiles {
  public:
   Character();
-  Character(std::string name, MobilesStatSheet* stats)
+  Character(std::string name, MobilesStatSheet *stats)
       : name(name), stats(stats){};
 
   ~Character();
@@ -27,7 +28,7 @@ class Character : public Mobiles {
   std::string name;
   bool isAlive = true;
   bool isAlly = true;
-  MobilesStatSheet* stats;
+  MobilesStatSheet *stats;
 };
 
 #endif  //? CHARACTER_H

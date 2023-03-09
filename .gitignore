@@ -2,3 +2,7 @@ build/
 .clang-format
 googletest/
 .vscode/
+./vendor/
+.clang-format.bac
+vendor/
+logs/cdoorLogger.log

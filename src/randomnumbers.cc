@@ -1,9 +1,9 @@
 #include "randomnumbers.h"
 
-RandomNumbers* RandomNumbers::pinstance_{nullptr};
+RandomNumbers *RandomNumbers::pinstance_{nullptr};
 std::mutex RandomNumbers::mutex_;
 
-RandomNumbers* RandomNumbers::GetInstance() {
+RandomNumbers *RandomNumbers::GetInstance() {
   std::lock_guard<std::mutex> lock(mutex_);
   if (pinstance_ == nullptr) {
     pinstance_ = new RandomNumbers();

@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 
-bool Combantant::SetTarget(Mobiles* target) {
+bool Combantant::SetTarget(Mobiles *target) {
   if (!target->IsAlive())
     return false;
   else {
@@ -13,21 +13,23 @@ bool Combantant::SetTarget(Mobiles* target) {
 }
 
 bool Combantant::DoAttack() {
-  std::cout << "Combantant::DoAttack self=" << self_->GetName()
-            << " alive=" << self_->IsAlive() << " target=" << target_->GetName()
-            << " alive=" << target_->IsAlive() << std::endl;
-
-  if (!self_->IsAlive() || !target_->IsAlive()) return false;
-  std::string showAtk = self_->GetName();
+  if (!self_->IsAlive()) {
+    LOG_WARN("DoAttack Comantant {0} alive= {1}", self_->GetName(),
+             self_->IsAlive());
+    return false;
+  } else if (!target_->IsAlive()) {
+    LOG_WARN("DoAttack Target {0} alive= {1}", target_->GetName(),
+             target_->IsAlive());
+    return false;
+  }
 
   if (IsHit()) {
     int dmg = RollDamage();
     DealDamage(dmg);
-    std::cout << self_->GetName() << " attacks " << target_->GetName()
-              << " for " << dmg << " damage!" << std::endl;
+    LOG_INFO("{0} attacks {1} for {2} damage!", self_->GetName(),
+             target_->GetName(), dmg);
   } else {
-    std::cout << self_->GetName() << " misses " << target_->GetName() << "!"
-              << std::endl;
+    LOG_INFO("{0} misses {1}!", self_->GetName(), target_->GetName());
   }
 
   return true;
@@ -36,17 +38,22 @@ bool Combantant::DoAttack() {
 bool Combantant::IsHit() { return true; }
 
 int Combantant::RollDamage() {
-  return RandomNumbers::GetInstance()->Roll(self_->GetStats(STATS::minDamage),
-                                            self_->GetStats(STATS::maxDamage));
+  int min = self_->GetStats(STATS::minDamage);
+  int max = self_->GetStats(STATS::maxDamage);
+  int dmg = RandomNumbers::GetInstance()->Roll(min, max);
+  LOG_INFO("Damage rolled: {0} :: min {1} max {2}", dmg, min, max);
+  return dmg;
 }
 
 bool Combantant::DealDamage(int dmg) {
   int cHP = target_->GetStats(STATS::currentHP);
   int newHP = cHP - dmg;
   target_->SetStats(STATS::currentHP, newHP);
-  std::cout << "Combantant::DealDamage dmg=" << dmg << " currentHP=" << cHP
-            << " newHP = " << newHP << std::endl;
+  LOG_INFO("{0} took {1} damage :: currentHP {2} newHP {3}", target_->GetName(),
+           dmg, cHP, newHP);
   if (newHP <= 0) {
+    LOG_INFO("{0} is now dead alive={1}", target_->GetName(),
+             target_->IsAlive());
     target_->SetAlive(false);
   }
   return true;

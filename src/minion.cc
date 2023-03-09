@@ -5,7 +5,7 @@ Minion::Minion() {
   stats = new MobilesStatSheet(0, 0, 0, 0, 0);
 }
 
-Minion::Minion(MobilesType* type) {
+Minion::Minion(MobilesType *type) {
   this->type = type;
   this->SetName(this->type->GetName());
 

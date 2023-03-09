@@ -10,11 +10,11 @@ class MobilesType {
   friend class boost::serialization::access;
 
   template <class Archive>
-  void serialize(Archive& ar, const unsigned int version) {
-    ar& name;
-    ar& baseHP;
-    ar& startingLevel;
-    ar& startingExps;
+  void serialize(Archive &ar, const unsigned int version) {
+    ar &name;
+    ar &baseHP;
+    ar &startingLevel;
+    ar &startingExps;
   }
 
   std::string name;
@@ -27,7 +27,7 @@ class MobilesType {
   MobilesType(std::string name, int hp, int lvl, int exps)
       : name(name), baseHP(hp), startingLevel(lvl), startingExps(exps) {}
 
-  MobilesType(const MobilesType& mType) {
+  MobilesType(const MobilesType &mType) {
     name = mType.name;
     baseHP = mType.baseHP;
     startingLevel = mType.startingLevel;
