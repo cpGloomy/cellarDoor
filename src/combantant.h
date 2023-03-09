@@ -10,7 +10,7 @@ class Combantant {
   Combantant(Mobiles* self) : self_(self), target_(nullptr) {}
   ~Combantant(){};
 
-  void SetTarget(Mobiles* target) { target_ = target; }
+  bool SetTarget(Mobiles* target);
   bool DoAttack();
   bool IsHit();
   int RollDamage();

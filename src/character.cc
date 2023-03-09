@@ -2,20 +2,24 @@
 
 #include <iostream>
 
-Character::Character() { this->stats = new MobilesStatSheet(0, 0, 0); }
+Character::Character() { stats = new MobilesStatSheet(0, 0, 0, 0, 0); }
 
-Character::~Character() { delete this->stats; }
+Character::~Character() { delete stats; }
 
 int Character::GetStats(STATS stat) {
   switch (stat) {
     case STATS::maxHP:
-      return this->stats->maxHP;
+      return stats->maxHP;
     case STATS::currentHP:
-      return this->stats->currentHP;
+      return stats->currentHP;
     case STATS::level:
-      return this->stats->level;
+      return stats->level;
     case STATS::experience:
-      return this->stats->experience;
+      return stats->experience;
+    case STATS::minDamage:
+      return stats->minDamage;
+    case STATS::maxDamage:
+      return stats->maxDamage;
     default:
       return 0;
   }
@@ -31,5 +35,9 @@ void Character::SetStats(STATS stat, int value) {
       stats->level = value;
     case STATS::experience:
       stats->experience = value;
+    case STATS::minDamage:
+      stats->minDamage = value;
+    case STATS::maxDamage:
+      stats->maxDamage = value;
   }
 }
