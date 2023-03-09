@@ -10,7 +10,7 @@
 class Minion : public Mobiles {
  public:
   Minion();
-  Minion(MobilesType* type);
+  Minion(MobilesType *type);
   ~Minion();
 
   virtual std::string const GetName() { return this->name; }
@@ -27,8 +27,8 @@ class Minion : public Mobiles {
   std::string name;
   bool isAlive = true;
   bool isAlly = true;
-  MobilesType* type;
-  MobilesStatSheet* stats;
+  MobilesType *type;
+  MobilesStatSheet *stats;
 };
 
 #endif  //? MINION_H

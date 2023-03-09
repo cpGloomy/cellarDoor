@@ -10,6 +10,10 @@ set(CMAKE_POSITION_INDEPENDENT_CODE)
 
 enable_testing()
 
+if(NOT TARGET spdlog)
+    find_package(spdlog REQUIRED)
+endif()
+
 # Boost
 find_package(Boost 1.81.0 COMPONENTS system filesystem serialization REQUIRED)
 include_directories(${BOOST_INCLUDE_DIRS})
@@ -28,6 +32,6 @@ file(GLOB all_SRC
 )
 
 add_library(${This} STATIC ${all_SRC})
-target_link_libraries(${This} jsoncpp_lib ${Boost_LIBRARIES})
+target_link_libraries(${This} ${Boost_LIBRARIES} spdlog::spdlog $<$<BOOL:${MINGW}>:ws2_32>)
 
 add_subdirectory(test)

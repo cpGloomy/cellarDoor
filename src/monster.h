@@ -10,7 +10,7 @@
 class Monster : public Mobiles {
  public:
   Monster();
-  Monster(MobilesType* type);
+  Monster(MobilesType *type);
   ~Monster();
 
   virtual std::string const GetName() { return this->name; }
@@ -27,8 +27,8 @@ class Monster : public Mobiles {
   std::string name;
   bool isAlive = true;
   bool isAlly = false;
-  MobilesType* type;
-  MobilesStatSheet* stats;
+  MobilesType *type;
+  MobilesStatSheet *stats;
 };
 
 #endif  //? MONSTER_H

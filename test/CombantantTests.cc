@@ -4,6 +4,7 @@
 
 #include "../src/character.h"
 #include "../src/combantant.h"
+#include "../src/log.h"
 #include "../src/monster.h"
 
 struct CombantantTests : public ::testing::Test {
@@ -14,6 +15,7 @@ struct CombantantTests : public ::testing::Test {
   Combantant* c2;
 
   virtual void SetUp() override {
+    Log::Init();
     giantRat = new MobilesType("Giant Rat", 45, 1, 0);
     monster = new Monster(giantRat);
     player = new Character("Omerye", new MobilesStatSheet(100, 1, 0, 5, 15));

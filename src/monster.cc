@@ -5,7 +5,7 @@ Monster::Monster() {
   stats = new MobilesStatSheet(0, 0, 0, 0, 0);
 }
 
-Monster::Monster(MobilesType* type) {
+Monster::Monster(MobilesType *type) {
   this->type = type;
   this->SetName(this->type->GetName());
 
