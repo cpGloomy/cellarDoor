@@ -1,16 +1,19 @@
 #include "minion.h"
 
 Minion::Minion() {
-  type = new MobilesType("null", 0, 0, 0);
-  stats = new MobilesStatSheet(0, 0, 0, 0, 0);
+  type = new MobilesType("null", 0, 0, 0, 0, 0, 0, 0, 0);
+  stats = new MobilesStatSheet(0, 0, 0, 0, 0, 0, 0, 0);
 }
 
 Minion::Minion(MobilesType *type) {
   this->type = type;
   this->SetName(this->type->GetName());
 
-  stats = new MobilesStatSheet(type->GetHP(), type->GetLevel(), type->GetExp(),
-                               1, 5);
+  stats = new MobilesStatSheet(
+      this->type->GetHP(), this->type->GetLevel(), this->type->GetExp(),
+      this->type->GetMinDamage(), this->type->GetMaxDamage(),
+      this->type->GetWeaponSkill(), this->type->GetAccuracy(),
+      this->type->GetEvasion());
 }
 
 Minion::~Minion() {
@@ -20,18 +23,24 @@ Minion::~Minion() {
 
 int Minion::GetStats(STATS stat) {
   switch (stat) {
-    case MobilesStatSheet::Stats::maxHP:
+    case STATS::maxHP:
       return stats->maxHP;
-    case MobilesStatSheet::Stats::currentHP:
+    case STATS::currentHP:
       return stats->currentHP;
-    case MobilesStatSheet::Stats::level:
+    case STATS::level:
       return stats->level;
-    case MobilesStatSheet::Stats::experience:
+    case STATS::experience:
       return stats->experience;
     case STATS::minDamage:
       return stats->minDamage;
     case STATS::maxDamage:
       return stats->maxDamage;
+    case STATS::weaponSkill:
+      return stats->weapon_skill_;
+    case STATS::accuracy:
+      return stats->accuracy_;
+    case STATS::evasion:
+      return stats->evasion_;
     default:
       return 0;
   }
@@ -47,5 +56,15 @@ void Minion::SetStats(STATS stat, int value) {
       stats->level = value;
     case STATS::experience:
       stats->experience = value;
+    case STATS::minDamage:
+      stats->minDamage = value;
+    case STATS::maxDamage:
+      stats->maxDamage = value;
+    case STATS::weaponSkill:
+      stats->weapon_skill_ = value;
+    case STATS::accuracy:
+      stats->accuracy_ = value;
+    case STATS::evasion:
+      stats->evasion_ = value;
   }
 }

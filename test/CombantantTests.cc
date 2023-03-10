@@ -16,9 +16,10 @@ struct CombantantTests : public ::testing::Test {
 
   virtual void SetUp() override {
     Log::Init();
-    giantRat = new MobilesType("Giant Rat", 45, 1, 0);
+    giantRat = new MobilesType("Giant Rat", 45, 1, 0, 1, 4, 75, 5, 75);
     monster = new Monster(giantRat);
-    player = new Character("Omerye", new MobilesStatSheet(100, 1, 0, 5, 15));
+    player = new Character("Omerye",
+                           new MobilesStatSheet(100, 1, 0, 5, 15, 75, 5, 75));
     c1 = new Combantant(player);
     c1->SetTarget(monster);
     c2 = new Combantant(monster);
@@ -52,6 +53,7 @@ TEST_F(CombantantTests, C1Deals10DamageToC2) {
   c2->self_->SetStats(STATS::currentHP, 45);
   c1->self_->SetStats(STATS::minDamage, 10);
   c1->self_->SetStats(STATS::minDamage, 10);
+  c2->self_->SetStats(STATS::evasion, 0);
   c1->DoAttack();
   EXPECT_EQ(c2->self_->GetStats(STATS::currentHP), 35);
 }
