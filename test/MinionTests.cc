@@ -9,7 +9,7 @@ struct MinionTest : public ::testing::Test {
   MobilesType* skeleton;
 
   virtual void SetUp() override {
-    skeleton = new MobilesType("Skeleton", 45, 1, 0);
+    skeleton = new MobilesType("Skeleton", 45, 1, 0, 0, 0, 0, 0, 0);
     minion = new Minion(skeleton);
   }
 

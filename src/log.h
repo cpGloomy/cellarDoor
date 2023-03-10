@@ -22,5 +22,6 @@ class Log {
 #define LOG_WARN(...) ::Log::GetLogger()->warn(__VA_ARGS__)
 #define LOG_ERROR(...) ::Log::GetLogger()->error(__VA_ARGS__)
 #define LOG_CRITICAL(...) ::Log::GetLogger()->critical(__VA_ARGS__)
+#define LOG_DEBUG(...) ::Log::GetLogger()->debug(__VA_ARGS__)
 
 #endif  //? LOG_H

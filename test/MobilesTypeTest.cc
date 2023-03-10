@@ -12,7 +12,7 @@ struct MobilesTypeConstructorTest : public ::testing::Test {
   MobilesType* skeleton_;
 
   virtual void SetUp() override {
-    skeleton_ = new MobilesType("Skeleton", 45, 1, 0);
+    skeleton_ = new MobilesType("Skeleton", 45, 1, 0, 1, 5, 75, 5, 75);
   }
 
   virtual void TearDown() override { delete skeleton_; }
@@ -41,7 +41,7 @@ struct MobilesTypeSaveTest : public ::testing::Test {
 
   virtual void SetUp() override {
     saver_ = Saver::GetInstance();
-    skeleton_ = new MobilesType("Skeleton", 45, 1, 0);
+    skeleton_ = new MobilesType("Skeleton", 45, 1, 0, 1, 5, 75, 5, 75);
     filename_ += "./data/";
     filename_ += skeleton_->GetName() += ".txt";
   }

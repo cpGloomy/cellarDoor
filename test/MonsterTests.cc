@@ -9,7 +9,7 @@ struct MonsterTest : public ::testing::Test {
   MobilesType* giantRat;
 
   virtual void SetUp() override {
-    giantRat = new MobilesType("Giant Rat", 45, 1, 0);
+    giantRat = new MobilesType("Giant Rat", 45, 1, 0, 1, 5, 75, 5, 75);
     monster = new Monster(giantRat);
   }
 

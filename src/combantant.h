@@ -13,12 +13,15 @@ class Combantant {
 
   bool SetTarget(Mobiles *target);
   bool DoAttack();
-  bool IsHit();
-  int RollDamage();
-  bool DealDamage(int dmg);
 
   Mobiles *self_;
   Mobiles *target_;
+
+ private:
+  bool IsHit();
+  int RollDamage();
+  bool DealDamage(int dmg);
+  float CalculateHitChance();
 };
 
 #endif  //? COMBANTANT_H
