@@ -16,6 +16,7 @@ class Mobiles {
   virtual void SetName(std::string name) = 0;
   virtual bool IsAlive() = 0;
   virtual bool IsAlly() = 0;
+  virtual bool IsPlayer() = 0;
   virtual void SetAlive(bool alive) = 0;
 
   virtual int GetStats(STATS stat) = 0;
