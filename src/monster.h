@@ -18,6 +18,7 @@ class Monster : public Mobiles {
 
   virtual bool IsAlive() { return isAlive; }
   virtual bool IsAlly() { return isAlly; }
+  virtual bool IsPlayer() { return is_player_; }
   virtual void SetAlive(bool alive) { isAlive = alive; }
 
   virtual int GetStats(STATS stat);
@@ -27,6 +28,7 @@ class Monster : public Mobiles {
   std::string name;
   bool isAlive = true;
   bool isAlly = false;
+  bool is_player_ = false;
   MobilesType *type;
   MobilesStatSheet *stats;
 };

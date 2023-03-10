@@ -19,6 +19,7 @@ class Character : public Mobiles {
 
   virtual bool IsAlive() { return isAlive; }
   virtual bool IsAlly() { return isAlly; }
+  virtual bool IsPlayer() { return is_player_; }
   virtual void SetAlive(bool alive) { isAlive = alive; }
 
   virtual int GetStats(STATS stat);
@@ -28,6 +29,7 @@ class Character : public Mobiles {
   std::string name;
   bool isAlive = true;
   bool isAlly = true;
+  bool is_player_ = true;
   MobilesStatSheet *stats;
 };
 
